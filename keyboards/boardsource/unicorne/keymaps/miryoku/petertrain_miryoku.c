@@ -4,14 +4,14 @@
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) {
+    if (!is_keyboard_left()) {
         return OLED_ROTATION_180;
     }
     return rotation;
 }
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
+    if (is_keyboard_left()) {
         switch (get_highest_layer(layer_state)) {
             case 0:
                 oled_write_raw(layer_colemak, sizeof(layer_colemak));
